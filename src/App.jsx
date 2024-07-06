@@ -1,4 +1,5 @@
 import Sidebar from "./Components/Sidebar";
+import CreateProject from "./Components/CreateProject";
 
 function App() {
     return (
@@ -8,6 +9,7 @@ function App() {
             </h1>
             <div className="flex flex-row">
                 <Sidebar />
+                <CreateProject />
             </div>
         </>
     );
