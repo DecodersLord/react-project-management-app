@@ -1,0 +1,15 @@
+{
+    "projects": [
+        {
+            "title": "Example Project 1",
+            "description": "Example Project idea",
+            "due-date": "2024-01-01",
+            "tasks": [
+                {
+                    "id": 1,
+                    "desc": "Create basic project plan"
+                }
+            ]
+        }
+    ]
+}
