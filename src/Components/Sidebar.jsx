@@ -1,9 +1,6 @@
 import { useState } from "react";
-import PROJECTS from "../db.json";
 
-export default function Sidebar() {
-    const [projects, setProjects] = useState(PROJECTS.projects);
-
+export default function Sidebar({ projects }) {
     return (
         <aside className="bg-black w-64 text-white text-2xl rounded-lg h-screen">
             <h2 className="p-6">Your Project</h2>
