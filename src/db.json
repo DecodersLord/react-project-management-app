@@ -10,6 +10,17 @@
                     "desc": "Create basic project plan"
                 }
             ]
+        },
+        {
+            "title": "Example Project 2",
+            "description": "Example Project idea",
+            "due-date": "2024-01-01",
+            "tasks": [
+                {
+                    "id": 1,
+                    "desc": "Create basic project plan"
+                }
+            ]
         }
     ]
 }
