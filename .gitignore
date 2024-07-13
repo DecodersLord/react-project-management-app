@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 .codesandbox
 .vite/
-.db.json
+src/db.json
