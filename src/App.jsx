@@ -10,21 +10,32 @@ function App() {
     const [selectedProject, setSelectedProject] = useState("");
 
     useEffect(() => {
-        fetch("http://localhost:3000/projects")
+        fetch("https://api.jsonbin.io/v3/b/6693645cacd3cb34a865e0bb")
             .then((response) => response.json())
-            .then((fetchedData) => setProjects(fetchedData))
+            .then((record) => {
+                setProjects(record.record.projects);
+            })
             .catch((error) =>
                 console.error("error fetching json data ", error)
             );
     }, []);
 
     function handleAddNewProject(newProject) {
-        fetch("http://localhost:3000/projects", {
-            method: "POST",
-            body: JSON.stringify(newProject),
-            headers: { "content-type": "application/json" },
+        const body = {
+            projects: [...projects, newProject],
+        };
+
+        fetch("https://api.jsonbin.io/v3/b/6693645cacd3cb34a865e0bb", {
+            method: "PUT",
+            body: JSON.stringify(body),
+            headers: {
+                "content-type": "application/json",
+                "X-Master-Key": import.meta.env.VITE_APP_API_KEY,
+                "X-Access-Key": import.meta.env.VITE_APP_ACCESS_KEY,
+            },
         })
             .then((response) => {
+                console.log(response);
                 if (!response.ok) {
                     throw new error("Failed to update JSON data.");
                 }
@@ -41,11 +52,17 @@ function App() {
 
         console.log(projectId);
 
-        fetch(`http://localhost:3000/projects/${projectId}`)
+        fetch("https://api.jsonbin.io/v3/b/6693645cacd3cb34a865e0bb")
             .then((response) => response.json())
-            .then((selectedProject) => setSelectedProject(selectedProject))
+            .then((record) => {
+                setSelectedProject(
+                    record.record.projects.find(
+                        (project) => project.id === projectId
+                    )
+                );
+            })
             .catch((error) =>
-                console.error("Error updating  JSON Data: ", error)
+                console.error("error fetching json data ", error)
             );
     }
 
