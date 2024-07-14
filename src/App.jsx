@@ -1,10 +1,13 @@
 import Sidebar from "./Components/Sidebar";
 import CreateProject from "./Components/CreateProject";
-import PROJECT from "./db.json";
 import { useEffect, useState } from "react";
+import PlaceHolder from "./Components/PlaceHolder";
+import Project from "./Components/Project";
 
 function App() {
     const [projects, setProjects] = useState([]);
+    const [isCreateProject, setIsCreateProject] = useState(false);
+    const [selectedProject, setSelectedProject] = useState("");
 
     useEffect(() => {
         fetch("http://localhost:3000/projects")
@@ -33,6 +36,19 @@ function App() {
             );
     }
 
+    function handleProjectSelect(projectId) {
+        setIsCreateProject(false);
+
+        console.log(projectId);
+
+        fetch(`http://localhost:3000/projects/${projectId}`)
+            .then((response) => response.json())
+            .then((selectedProject) => setSelectedProject(selectedProject))
+            .catch((error) =>
+                console.error("Error updating  JSON Data: ", error)
+            );
+    }
+
     return (
         <>
             <div className="font-arsenal">
@@ -40,8 +56,22 @@ function App() {
                     React Project Management
                 </h1>
                 <div className="flex flex-row">
-                    <Sidebar projects={projects} />
-                    <CreateProject handleAddNewProject={handleAddNewProject} />
+                    <Sidebar
+                        projects={projects}
+                        selectProject={handleProjectSelect}
+                        createProject={setIsCreateProject}
+                    />
+                    {isCreateProject && (
+                        <CreateProject
+                            handleAddNewProject={handleAddNewProject}
+                        />
+                    )}
+                    {!isCreateProject && selectedProject != "" && (
+                        <Project project={selectedProject} />
+                    )}
+                    {!isCreateProject && selectedProject == "" && (
+                        <PlaceHolder createProject={setIsCreateProject} />
+                    )}
                 </div>
             </div>
         </>

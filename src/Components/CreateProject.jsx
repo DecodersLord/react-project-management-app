@@ -28,6 +28,9 @@ export default function CreateProject({ handleAddNewProject }) {
             className="flex flex-col h-fit w-9/12 justify-center ml-2 mr-auto mt-20 p-8 font-medium"
             onSubmit={handleSubmit}
         >
+            <legend className="text-4xl mx-auto font-bold">
+                Create New Project
+            </legend>
             <label htmlFor="Title" className="mt-4">
                 TITLE
             </label>
