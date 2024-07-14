@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function CreateProject({ handleAddNewProject }) {
     const [projectValues, setProjectValues] = useState({
+        id: uuidv4(),
         title: "",
         description: "",
         "due-date": "",
@@ -17,6 +19,7 @@ export default function CreateProject({ handleAddNewProject }) {
     }
 
     function handleSubmit(e) {
+        e.preventDefault();
         console.log(projectValues);
 
         handleAddNewProject(projectValues);
