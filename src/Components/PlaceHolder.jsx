@@ -10,7 +10,7 @@ export default function PlaceHolder({ createProject }) {
                 </p>
                 <p className="font-extrabold text-center text-4xl mt-4">OR</p>
                 <button
-                    className="bg-green-800 flex mx-auto rounded-md w-fit px-2 py-2 text-sm my-6"
+                    className="bg-green-800 flex mx-auto rounded-md w-fit px-2 py-2 text-sm my-6 text-white"
                     onClick={() => createProject(true)}
                 >
                     + Create A new Project

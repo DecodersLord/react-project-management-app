@@ -59,17 +59,19 @@ function App() {
                     <Sidebar
                         projects={projects}
                         selectProject={handleProjectSelect}
+                        createProject={setIsCreateProject}
                     />
-                    {isCreateProject ? (
+                    {isCreateProject && (
                         <CreateProject
                             handleAddNewProject={handleAddNewProject}
                         />
-                    ) : (
+                    )}
+                    {!isCreateProject && selectedProject != "" && (
+                        <Project project={selectedProject} />
+                    )}
+                    {!isCreateProject && selectedProject == "" && (
                         <PlaceHolder createProject={setIsCreateProject} />
                     )}
-                    {selectedProject != "" ? (
-                        <Project project={selectedProject} />
-                    ) : undefined}
                 </div>
             </div>
         </>
