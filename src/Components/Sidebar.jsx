@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function Sidebar({ projects, selectProject, createProject }) {
     return (
-        <aside className="bg-black w-64 text-white text-2xl rounded-lg h-screen">
+        <aside className="bg-black w-64 text-white text-2xl rounded-r-lg h-screen">
             <h2 className="p-6">Your Project</h2>
             <ul>
                 {projects?.map((project) => (
