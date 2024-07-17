@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Input from "./Input";
 
 export default function CreateProject({ handleAddNewProject }) {
     const [projectValues, setProjectValues] = useState({
@@ -34,21 +35,17 @@ export default function CreateProject({ handleAddNewProject }) {
             <legend className="text-4xl mx-auto font-bold">
                 Create New Project
             </legend>
-            <label htmlFor="Title" className="mt-4">
-                TITLE
-            </label>
-            <input
+            <Input
+                label="Title"
                 type="text"
                 name="title"
                 id="title"
                 value={projectValues.title}
                 onChange={(e) => handleChange("title", e.target.value)}
-                className="bg-zinc-200 focus:border-b-2 focus:outline-none focus:border-b-black"
             />
-            <label htmlFor="Description" className="mt-4">
-                DESCRIPTION
-            </label>
-            <textarea
+            <Input
+                label="Description"
+                textarea
                 type="text"
                 name="Description"
                 id="Description"
@@ -56,10 +53,8 @@ export default function CreateProject({ handleAddNewProject }) {
                 onChange={(e) => handleChange("description", e.target.value)}
                 className="bg-zinc-200 focus:border-b-2 focus:outline-none focus:border-b-black"
             />
-            <label htmlFor="Title" className="mt-4">
-                DUE DATE
-            </label>
-            <input
+            <Input
+                label="Due-Date"
                 type="date"
                 name="title"
                 id="title"
